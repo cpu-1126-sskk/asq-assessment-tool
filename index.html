@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情感风格问卷 (ASQ) 评估 | 交互式测评系统</title>
+    <meta name="description" content="本问卷旨在评估你日常处理和调节情绪的习惯性策略。通过隐藏、调整和容忍三个维度深度分析你的情感风格。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <main class="glass-panel">
+            <!-- Intro View -->
+            <div id="intro-view">
+                <h1>情感风格问卷 (ASQ)</h1>
+                <p class="description">
+                    本问卷旨在评估你日常处理和调节情绪的习惯性策略。请根据你近期的真实感受，对以下陈述进行评分。
+                    <br><br>
+                    <strong>评分标准：</strong> 1 = 完全不符合，2 = 较不符合，3 = 不确定/中立，4 = 较符合，5 = 完全符合
+                </p>
+                <button id="start-btn" class="btn-primary">开始评估</button>
+            </div>
+
+            <!-- Quiz View -->
+            <div id="quiz-view" style="display: none;">
+                <div class="progress-wrapper">
+                    <div class="progress-track">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+                    <div class="progress-stats">
+                        <span id="progress-text">第 1 / 20 题</span>
+                        <span id="progress-percentage">0%</span>
+                    </div>
+                </div>
+                
+                <div id="question-container">
+                    <!-- Questions will be injected here by JS -->
+                </div>
+
+                <div id="quiz-controls" style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                    <button id="prev-btn" class="btn-primary" style="background: rgba(255,255,255,0.05); color: var(--text-secondary); box-shadow: none; visibility: hidden;">上一题</button>
+                    <button id="next-btn" class="btn-primary">下一题</button>
+                </div>
+            </div>
+
+            <!-- Result View -->
+            <div id="result-view" class="results-container">
+                <h1>你的情感风格评估结果</h1>
+                <p class="description">根据你的作答，我们从三个核心维度对你的情绪调节倾向进行了量化分析。</p>
+                
+                <div class="results-grid">
+                    <div class="metrics-list">
+                        <div class="metric-card">
+                            <div class="metric-title">隐藏倾向 (Concealing)</div>
+                            <div id="score-c" class="metric-value">0.0</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">调整能力 (Adjusting)</div>
+                            <div id="score-a" class="metric-value">0.0</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">容忍程度 (Tolerating)</div>
+                            <div id="score-t" class="metric-value">0.0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-wrapper">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="interpretation">
+                    <div class="interpretation-item">
+                        <h3>隐藏 (Concealing)</h3>
+                        <p>得分较高说明你倾向于将情绪内部化，较少向外界表露。适度隐藏有助于维持社交面貌，但过度压抑可能增加心理负担。</p>
+                    </div>
+                    <div class="interpretation-item">
+                        <h3>调整 (Adjusting)</h3>
+                        <p>得分较高显示你具备强大的情绪管理和适应能力，能够根据环境需求有效平复或转换情绪。</p>
+                    </div>
+                    <div class="interpretation-item">
+                        <h3>容忍 (Tolerating)</h3>
+                        <p>得分较高意味着你对负面情绪有较高的接纳度。你不急于排斥不良感受，这有助于心理韧性的建立。</p>
+                    </div>
+                    <div style="margin-top: 3rem; text-align: center;">
+                        <button onclick="window.location.reload()" class="btn-primary" style="background: rgba(255,255,255,0.05); color: var(--text-secondary); box-shadow: none;">重新测评</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
