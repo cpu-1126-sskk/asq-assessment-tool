@@ -79,7 +79,14 @@ function getLabel(val) {
 
 window.saveResponse = (id, val) => {
     responses[id] = val;
-    // Auto-advance after a short delay for better UX
+    
+    // Add fade-out animation to current question
+    const currentContainer = questionContainer.querySelector('.question-container');
+    if (currentContainer) {
+        currentContainer.classList.add('fade-out');
+    }
+
+    // Advance after animation completes
     setTimeout(() => {
         if (currentQuestionIndex < questions.length - 1) {
             currentQuestionIndex++;
@@ -87,7 +94,7 @@ window.saveResponse = (id, val) => {
         } else {
             showResults();
         }
-    }, 400);
+    }, 400); // Matches the slideOut duration
 };
 
 function updateProgress() {
