@@ -17,7 +17,7 @@ const questions = [
     {id: 16, text: "我经常戴着面具与人交往。", dimension: "C"},
     {id: 17, text: "我善于在不同场合展现出恰当的情绪。", dimension: "A"},
     {id: 18, text: "我倾向于掩饰自己的脆弱。", dimension: "C"},
-    {id: 19, text: "当情绪激动时，我很难让自己恢复理智。（反向计分题）", dimension: "A_rev"},
+    {id: 19, text: "当情绪激动时，我很难让自己恢复理智。", dimension: "A_rev"},
     {id: 20, text: "我不喜欢让别人看到我哭泣。", dimension: "C"}
 ];
 
