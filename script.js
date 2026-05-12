@@ -1,24 +1,24 @@
 const questions = [
-    {id: 1, text: "我经常向他人隐藏我的真实情绪。", dimension: "C"},
-    {id: 2, text: "当我感到强烈的情绪时，我能很快让自己平静下来。", dimension: "A"},
-    {id: 3, text: "我觉得体验负面情绪是可以接受的。", dimension: "T"},
-    {id: 4, text: "我尽量不在别人面前表露我的不悦。", dimension: "C"},
-    {id: 5, text: "我能够很好地控制自己的情绪反应。", dimension: "A"},
-    {id: 6, text: "当悲伤或焦虑出现时，我允许自己去感受它们。", dimension: "T"},
-    {id: 7, text: "人们通常看不出我内心的真实感受。", dimension: "C"},
-    {id: 8, text: "遇到突发状况时，我能迅速调整心态。", dimension: "A"},
-    {id: 9, text: "我认为情绪低落是生活正常的一部分。", dimension: "T"},
-    {id: 10, text: "我习惯将情绪压抑在心里。", dimension: "C"},
-    {id: 11, text: "我知道如何让自己从糟糕的情绪中走出来。", dimension: "A"},
-    {id: 12, text: "面对不确定性带来的焦虑，我能够与之共处。", dimension: "T"},
-    {id: 13, text: "我很少与他人分享我深层的感受。", dimension: "C"},
-    {id: 14, text: "如果我愿意，我可以轻易改变自己的情绪状态。", dimension: "A"},
-    {id: 15, text: "即使感到害怕，我也能接纳这种恐惧。", dimension: "T"},
-    {id: 16, text: "我经常戴着面具与人交往。", dimension: "C"},
-    {id: 17, text: "我善于在不同场合展现出恰当的情绪。", dimension: "A"},
-    {id: 18, text: "我倾向于掩饰自己的脆弱。", dimension: "C"},
-    {id: 19, text: "当情绪激动时，我很难让自己恢复理智。", dimension: "A_rev"},
-    {id: 20, text: "我不喜欢让别人看到我哭泣。", dimension: "C"}
+    {id: 1, text: "人们通常看不出我内心的真实感受。", english: "People usually can't tell how I am feeling inside.", dimension: "C"},
+    {id: 2, text: "我能够很好地控制自己的情绪。", english: "I have my emotions well under control.", dimension: "A"},
+    {id: 3, text: "我能够容忍强烈的的情绪。", english: "I can tolerate having strong emotions.", dimension: "T"},
+    {id: 4, text: "我可以通过换个角度看问题来避免心烦意乱。", english: "I can avoid getting upset by taking a different perspective on things.", dimension: "A"},
+    {id: 5, text: "我经常压抑自己对事物的情绪反应。", english: "I often suppress my emotional reactions to things.", dimension: "C"},
+    {id: 6, text: "就算别人看到我心烦意乱也没关系。", english: "It's ok if people see me being upset.", dimension: "T"},
+    {id: 7, text: "我能很快平静下来。", english: "I can calm down very quickly.", dimension: "A"},
+    {id: 8, text: "我能够放下自己的情绪。", english: "I am able to let go of my feelings.", dimension: "A"},
+    {id: 9, text: "我很擅长隐藏自己的感情。", english: "I am good at hiding my feelings.", dimension: "C"},
+    {id: 10, text: "人们通常看不出我什么时候心烦意乱。", english: "People usually can't tell when I am upset.", dimension: "C"},
+    {id: 11, text: "有时有负面情绪是可以的。", english: "It's ok to feel negative emotions at times.", dimension: "T"},
+    {id: 12, text: "我能很快从坏情绪中走出来。", english: "I can get out of a bad mood very quickly.", dimension: "A"},
+    {id: 13, text: "人们通常看不出我什么时候伤心。", english: "People usually can't tell when I am sad.", dimension: "C"},
+    {id: 14, text: "我能容忍自己心烦意乱。", english: "I can tolerate being upset.", dimension: "T"},
+    {id: 15, text: "我能表现得让别人看不出我心烦意乱。", english: "I can act in a way that people don't see me being upset.", dimension: "C"},
+    {id: 16, text: "我确切地知道怎么做才能让自己的心情好起来。", english: "I know exactly what to do to get myself into a better mood.", dimension: "A"},
+    {id: 17, text: "情绪激动并没有什么错。", english: "There is nothing wrong with feeling very emotional.", dimension: "T"},
+    {id: 18, text: "我可以轻易伪装情绪。", english: "I could easily fake emotions.", dimension: "C"},
+    {id: 19, text: "我能很容易地让心情变好。", english: "I can get into a better mood quite easily.", dimension: "A"},
+    {id: 20, text: "如果必须的话，我能很好地隐藏我的愤怒。", english: "I can hide my anger well if I have to.", dimension: "C"}
 ];
 
 let currentQuestionIndex = 0;
@@ -50,6 +50,7 @@ function renderQuestion() {
     questionContainer.innerHTML = `
         <div class="question-container active">
             <h2 class="question-text">${q.id}. ${q.text}</h2>
+            <p class="english-text">${q.english}</p>
             <div class="options-grid">
                 ${[1, 2, 3, 4, 5].map(val => `
                     <label class="option-item">
@@ -143,9 +144,6 @@ function showResults() {
             counts.C++;
         } else if (q.dimension === 'A') {
             scores.A += val;
-            counts.A++;
-        } else if (q.dimension === 'A_rev') {
-            scores.A += (6 - val);
             counts.A++;
         } else if (q.dimension === 'T') {
             scores.T += val;
